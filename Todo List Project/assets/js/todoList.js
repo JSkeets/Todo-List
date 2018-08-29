@@ -1,20 +1,36 @@
 
-var input = document.querySelector("input");
+var textIn = document.getElementById("newLineInput");
 var listItems = document.getElementsByTagName("li");
 
 var trashBtn = document.getElementsByClassName("trashBtn");
 var list = document.getElementById("parent");
 
 
+
 // addEventListener added to todo list items
 for(var i = 0; i < listItems.length; i++) {
 
-	// deleteBtn();
+	deleteBtn();
 	strikeThrough();
 	deleteLine();
 }
-// addEventListener for Delete Button
 
+addLine();
+
+// addEventListener for Input line
+function addLine() {
+	textIn.addEventListener("keypress", function(event) {
+		console.log(event.code);
+		if(event.code === "Enter") {
+		var newLine = document.createElement("li");
+		newLine.appendChild(document.createTextNode(textIn.value));
+		list.appendChild(newLine);
+		console.log("button has been pressed");
+		textIn.value = "";
+	}
+	});
+}
+// addEventListener for Delete Button
 function deleteLine() {
 	let nested = listItems[i];
 	trashBtn[i].addEventListener("click", function() {

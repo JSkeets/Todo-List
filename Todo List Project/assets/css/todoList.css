@@ -10,6 +10,7 @@ li {
 	
 	/*margin: 0px auto;*/
 	padding: 5px 10px;
+	list-style: none;
 }
 .container {
 	margin: 0 auto;
