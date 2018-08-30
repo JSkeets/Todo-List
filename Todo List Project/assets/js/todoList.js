@@ -4,29 +4,56 @@ var listItems = document.getElementsByTagName("li");
 
 var trashBtn = document.getElementsByClassName("trashBtn");
 var list = document.getElementById("parent");
+var plusSign = document.getElementById("plusSign");
 
 
 
 // addEventListener added to todo list items
 for(var i = 0; i < listItems.length; i++) {
 
-	deleteBtn();
+	// deleteBtn();
 	strikeThrough();
 	deleteLine();
 }
 
 addLine();
+showHide();
+
+// plus sign hides addLine
+
+plusSign.addEventListener("click", function() {
+	if (textIn.style.display === "") {
+		textIn.style.display = "none";
+	} else if (textIn.style.display === "none") {
+		textIn.style.display = "";
+	}
+});
+
+//this code assigns eventlisteners to newly added list items. 
+function showHide() {
+	list.addEventListener("click", function (event) {
+	  if (event.target.tagName === "LI") {
+	    event.target.classList.toggle("strike");
+	  } else if (event.target.tagName === "SPAN") {
+	  	let target = event.target;
+	  	let parent = target.parentElement;
+	  	console.log(parent);
+	  	list.removeChild(parent);
+	  }
+	});
+}
 
 // addEventListener for Input line
 function addLine() {
 	textIn.addEventListener("keypress", function(event) {
-		console.log(event.code);
 		if(event.code === "Enter") {
-		var newLine = document.createElement("li");
-		newLine.appendChild(document.createTextNode(textIn.value));
-		list.appendChild(newLine);
-		console.log("button has been pressed");
-		textIn.value = "";
+			var newLine = document.createElement("li");
+			newLine.appendChild(document.createTextNode(""));
+			newLine.innerHTML = "<span class=\"trashBtn\"></i><i class=\"fas fa-trash-alt\"></i></span>" + textIn.value;
+			// newLine.appendChild(document.createTextNode(textIn.value + "<span class="trashBtn"></i>x</span>"));
+			list.appendChild(newLine);
+			console.log("button has been pressed");
+			textIn.value = "";
 	}
 	});
 }
@@ -41,19 +68,20 @@ function deleteLine() {
 }
 
 // adds trashcan icon when mouseover todo item
-function deleteBtn() {
-	var changer = trashBtn[i]
-	listItems[i].addEventListener("mouseover", function() {
-		changer.innerHTML = "<i class=\"fas fa-trash-alt\">";
+// function deleteBtn() {
+// 	var changer = trashBtn[i]
+// 	listItems[i].addEventListener("mouseover", function() {
+// 		trashBtn[i].classList.toggle("show");
+		// changer.innerHTML = "<i class=\"fas fa-trash-alt\">";
 		// this.innerHTML = textInside + "<span class=\"deleteBtn\"><i class=\"fas fa-trash-alt\"></i></span>";
 		// reset the colors after a short delay
 		
 
-	});
-	listItems[i].addEventListener("mouseout", function(){
-		changer.innerHTML = "";
-	});
-}
+// 	});
+// 	listItems[i].addEventListener("mouseout", function(){
+// 		changer.innerHTML = "";
+// 	});
+// }
 // line-through clicked items in list
 function strikeThrough() {
 	listItems[i].addEventListener("click", function(event) {
@@ -63,22 +91,4 @@ function strikeThrough() {
 }
 
 
-
-// input.addEventListener("mouseover" , function() {
-// 	addLi();
-// });
-
-
-// function addLi() {
-// 	// new element
-// 	var newLi = document.createElement("li");
-// 	// content for new element
-// 	var newContent = document.createTextNode("Hi there and greetings");
-	
-// 	// add the text node to the newly created div
-	
-
-// 	// add the newly created element and its content into the DOM
-// 	list.appendChild(newContent);
-// }
 

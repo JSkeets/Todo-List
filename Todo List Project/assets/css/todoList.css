@@ -1,28 +1,72 @@
+body {
+	background: linear-gradient(to right, rgb(60, 195, 223), rgb(193, 196, 160));
+}
+
 ul {
 	list-style: none;
 	margin: 0;
+	padding: 0;
 	
 }
 
 li {
 	background-color: white;
-	text-align: left;
-	
+	/*text-align: left;*/
+	height: 40px;
 	/*margin: 0px auto;*/
-	padding: 5px 10px;
+	/*padding: 5px 10px;*/
 	list-style: none;
+	line-height: 40px;
+	color: #666;
 }
+
+input {
+	font-size: 18px;
+	background-color:#f7f7f7;
+	width: 100%;
+	padding: 13px 13px 13px 20px;
+	box-sizing: border-box;
+	border: 3px solid rgba(0, 0, 0, 0);
+}
+
+input:focus {
+	background: #fff;
+	border: 3px solid #2980b9;
+	outline: none;
+}
+
 .container {
-	margin: 0 auto;
+	margin: 100px auto;
 	width: 360px;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 }
 
 li:nth-child(even) {
 	background: rgb(246, 246, 246);
 }
 
-body {
-	background: linear-gradient(to right, rgb(60, 195, 223), rgb(193, 196, 160));
+.trashBtn {
+	align-items: right;
+	background-color: #e74c3c;
+	height: 40px;
+	text-align: center;
+	color: white;
+	width: 0;
+	display: inline-block;
+	margin-right: 20px;
+	transition: 0.2s linear;
+	opacity: 0;
+}
+
+li:hover .trashBtn {
+	width: 40px;
+	opacity: 1.0;
+
+}
+
+.strike {
+	text-decoration-line: line-through;
+	color: gray;
 }
 
 #title {
@@ -31,21 +75,13 @@ body {
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	height: 30px;
-	font-size: 20px;
-	padding-top: 10px;
-	margin: 60px 0 0 0;
+	font-size: 24px;
+	padding: 10px 20px;
+	margin: 0 0 0 0;
+	font-weight: normal;
 }
 
 #plusSign {
 	float: right;
-}
-
-.trashBtn {
-	float: right;
-}
-
-.strike {
-	text-decoration-line: line-through;
-	color: gray;
 }
 
